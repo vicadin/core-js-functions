@@ -90,7 +90,7 @@ function getPowerFunction(exponent) {
  */
 function getPolynom(...args) {
   if (args === 0) return null;
-  return function (x) {
+  return (x) => {
     let result = 0;
     for (let i = 0; i < args.length; i += 1) {
       result += args[i] * x ** (args.length - 1 - i);
@@ -117,7 +117,7 @@ function memoize(func) {
   let cache = null;
   let isCached = false;
 
-  return function () {
+  return () => {
     if (!isCached) {
       cache = func();
       isCached = true;
@@ -186,7 +186,7 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args1) {
-  return function (...args2) {
+  return (...args2) => {
     return fn(...args1, ...args2);
   };
 }
@@ -210,7 +210,7 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   let id = startFrom;
-  return function () {
+  return () => {
     const res = id;
     id += 1;
     return res;
